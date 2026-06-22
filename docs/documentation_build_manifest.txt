@@ -1,0 +1,13 @@
+documentation_pdf_build=success
+output=docs/documentation.pdf
+sources=
+README.md
+docs/HANDBOOK.md
+docs/tutorials/01_problem_setup_and_legal_challenges.md
+docs/tutorials/02_dataset_and_supervision_design.md
+docs/tutorials/03_baselines_and_prompting_systems.md
+docs/tutorials/04_finetuning_with_trl_peft_unsloth.md
+docs/tutorials/05_evaluation_and_llm_judging.md
+docs/tutorials/06_error_analysis_and_visualization.md
+docs/tutorials/07_inference_workflow_and_examples.md
+docs/tutorials/08_strict_run_validation_and_artifact_audit.md

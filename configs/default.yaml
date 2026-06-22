@@ -1,0 +1,73 @@
+project:
+  seed: 42
+  hf_repo: "coastalcph/lex_glue"
+  cache_dir: "data/hf_cache"
+  run_name: "balanced_local_v1"
+
+models:
+  embedding_ollama: "qwen3-embedding:4b"
+  generation_qwen_ollama: "qwen3.5:4b"
+  generation_granite_ollama: "granite4.1:3b"
+  ocr_ollama: "glm-ocr"
+  finetune_base_hf: "ibm-granite/granite-4.1-3b"
+  alt_finetune_base_hf: "Qwen/Qwen3.5-4B"
+
+runtime:
+  backend: "ollama"
+  use_gpu: true
+  max_generation_tokens: 120
+  temperature: 0.1
+  top_p: 0.9
+  num_ctx: 2048
+
+sampling:
+  train_rows_per_dataset: 320
+  val_rows_per_dataset: 20
+  test_rows_per_dataset: 70
+  max_input_chars: 3000
+  max_output_chars: 2200
+
+training:
+  output_dir: "artifacts/models/finetuned_adapter"
+  trainer_backend: "auto"
+  require_unsloth: false
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  lora_target_modules:
+    - "q_proj"
+    - "v_proj"
+  batch_size: 1
+  gradient_accumulation_steps: 8
+  learning_rate: 0.0002
+  warmup_ratio: 0.08
+  weight_decay: 0.01
+  num_train_epochs: 1.0
+  max_steps: 8
+  eval_steps: 100
+  save_steps: 100
+  logging_steps: 5
+  max_seq_length: 128
+  dataloader_num_workers: 2
+  use_4bit: true
+  bf16: true
+  gradient_checkpointing: true
+  gradient_checkpointing_reentrant: false
+  max_memory_gpu_gib: 7.0
+  max_memory_cpu_gib: 24.0
+
+evaluation:
+  max_eval_examples: 36
+  judge_max_examples: 18
+  hallucination_max_examples: 36
+  summary_dataset_priority:
+    - "case_hold"
+    - "scotus"
+    - "eurlex"
+
+paths:
+  processed_dir: "data/processed"
+  run_dir: "artifacts/runs"
+  figures_dir: "artifacts/figures"
+  metrics_dir: "artifacts/metrics"
+  inference_dir: "artifacts/inference"

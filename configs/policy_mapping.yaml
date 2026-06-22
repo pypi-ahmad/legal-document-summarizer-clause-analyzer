@@ -1,0 +1,74 @@
+# Deterministic, auditable rules used to convert gold LexGLUE labels into structured legal analysis fields.
+# This enforces the user's "gold-label-only" policy (no synthetic labels).
+risk_levels:
+  low:
+    - "definitions"
+    - "titles"
+    - "headings"
+    - "records"
+    - "notices"
+  medium:
+    - "governing laws"
+    - "jurisdiction"
+    - "arbitration"
+    - "compliance with laws"
+    - "taxes"
+    - "payments"
+    - "terminations"
+    - "indemnifications"
+  high:
+    - "limitation of liability"
+    - "unilateral termination"
+    - "unilateral change"
+    - "waiver of jury trials"
+    - "liens"
+    - "litigations"
+    - "sanctions"
+    - "indemnity"
+
+liability_buckets:
+  financial liability:
+    - "payments"
+    - "fees"
+    - "taxes"
+    - "indemnity"
+    - "limitation of liability"
+  regulatory liability:
+    - "compliance with laws"
+    - "sanctions"
+    - "consumer protection"
+    - "public health"
+  contractual liability:
+    - "breach"
+    - "termination"
+    - "warranties"
+    - "representations"
+    - "enforceability"
+
+red_flag_keywords:
+  - "broad indemnification"
+  - "unlimited liability"
+  - "unilateral termination"
+  - "unilateral change"
+  - "missing liability cap"
+  - "arbitration without carve-out"
+
+obligation_keywords:
+  - "must"
+  - "shall"
+  - "required"
+  - "obligated"
+  - "duty"
+
+rights_keywords:
+  - "may"
+  - "entitled"
+  - "right"
+  - "can"
+
+restriction_keywords:
+  - "prohibited"
+  - "cannot"
+  - "must not"
+  - "restricted"
+  - "limited"

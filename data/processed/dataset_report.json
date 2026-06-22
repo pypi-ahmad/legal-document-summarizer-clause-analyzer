@@ -1,0 +1,82 @@
+{
+  "row_counts": {
+    "train": 1540,
+    "validation": 97,
+    "test": 337
+  },
+  "datasets_per_split": {
+    "train": {
+      "ledgar": 315,
+      "unfair_tos": 266,
+      "scotus": 320,
+      "eurlex": 320,
+      "case_hold": 319
+    },
+    "validation": {
+      "ledgar": 20,
+      "unfair_tos": 17,
+      "scotus": 20,
+      "eurlex": 20,
+      "case_hold": 20
+    },
+    "test": {
+      "ledgar": 70,
+      "unfair_tos": 57,
+      "scotus": 70,
+      "eurlex": 70,
+      "case_hold": 70
+    }
+  },
+  "risk_distribution_train": {
+    "medium": 220,
+    "low": 1254,
+    "high": 66
+  },
+  "dataset_structure": {
+    "ledgar": "single-label contract clause classification",
+    "unfair_tos": "multi-label unfair consumer contract terms",
+    "scotus": "single-label US Supreme Court opinion topics",
+    "eurlex": "multi-label EU legal act classification",
+    "case_hold": "single-label legal holding selection"
+  },
+  "labeling_schema": {
+    "single_label_datasets": [
+      "ledgar",
+      "scotus",
+      "case_hold"
+    ],
+    "multi_label_datasets": [
+      "unfair_tos",
+      "eurlex"
+    ]
+  },
+  "regulatory_hierarchy": {
+    "contract_law": [
+      "ledgar",
+      "unfair_tos"
+    ],
+    "case_law_us": [
+      "scotus",
+      "case_hold"
+    ],
+    "regulatory_law_eu": [
+      "eurlex"
+    ]
+  },
+  "case_metadata": {
+    "case_hold": [
+      "correct_ending",
+      "endings"
+    ],
+    "others": [
+      "dataset_name",
+      "split",
+      "label_names"
+    ]
+  },
+  "dataset_limitations": [
+    "No native executive-summary gold labels across all tasks.",
+    "No direct gold risk/liability taxonomy for our unified output schema.",
+    "Cross-jurisdiction semantics can be underrepresented in compact model training."
+  ]
+}
